@@ -17,6 +17,7 @@ public class Movie {
     String backdropPath;
     String originalTile;
     String overview;
+    String releaseDate;
     double rating;
     double popularity;
 
@@ -31,6 +32,10 @@ public class Movie {
     public String getPosterPath() {
        // return String.format(posterPre, posterPath);
         return posterPre + posterPath;
+    }
+
+    public String getReleaseDate() {
+        return releaseDate;
     }
 
     public String getBackdropPath() {
@@ -52,6 +57,7 @@ public class Movie {
         this.overview = jsonObject.getString("overview");
         this.rating = jsonObject.getDouble("vote_average");
         this.popularity = jsonObject.getDouble("popularity");
+        this.releaseDate = jsonObject.getString("release_date");
     }
 
     public static ArrayList<Movie> fromJSONArray(JSONArray array) {

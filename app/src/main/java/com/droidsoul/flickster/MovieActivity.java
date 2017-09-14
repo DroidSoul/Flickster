@@ -19,6 +19,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -36,6 +38,64 @@ public class MovieActivity extends AppCompatActivity {
         movies = new ArrayList<>();
         movieAdapter = new MovieArrayAdapter(this, movies);
         lvMovies.setAdapter(movieAdapter);
+        getMovies();
+        setupListViewListener();
+    }
+    private void setupListViewListener() {
+        lvMovies.setOnItemClickListener(
+                new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Movie movie = movies.get(position);
+                        Intent i = new Intent(MovieActivity.this, MovieDetail.class);
+                        i.putExtra("rating", movie.getRating());
+                        i.putExtra("popularity", String.valueOf(movie.getPopularity()));
+                        i.putExtra("synopsis", movie.getOverview());
+                        startActivity(i);
+                    }
+                }
+        );
+    }
+    //sort list based on due date
+    public void sortRating(View view) {
+        Collections.sort(movies, new Comparator<Movie>() {
+            @Override
+            public int compare(Movie o1, Movie o2) {
+                if (o1.getRating() <= o2.getRating()) {
+                    return 1;
+                }
+                else {
+                    return -1;
+                }
+            }
+        });
+        movieAdapter.notifyDataSetChanged();
+    }
+    //sort list based on priority
+    public void sortPopularity(View view) {
+        Collections.sort(movies, new Comparator<Movie>() {
+            @Override
+            public int compare(Movie o1, Movie o2) {
+                if (o1.getPopularity() <= o2.getPopularity()) {
+                    return 1;
+                }
+                else {
+                    return -1;
+                }
+            }
+        });
+        movieAdapter.notifyDataSetChanged();
+    }
+    public void sortReleaseDate(View view) {
+        Collections.sort(movies, new Comparator<Movie>() {
+            @Override
+            public int compare(Movie o1, Movie o2) {
+               return -o1.getReleaseDate().compareTo(o2.getReleaseDate());
+            }
+        });
+        movieAdapter.notifyDataSetChanged();
+    }
+    private void getMovies() {
         String url = "https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed";
         AsyncHttpClient client = new AsyncHttpClient();
         client.get(url, new JsonHttpResponseHandler(){
@@ -56,22 +116,5 @@ public class MovieActivity extends AppCompatActivity {
                 super.onFailure(statusCode, headers, responseString, throwable);
             }
         });
-        setupListViewListener();
-    }
-    private void setupListViewListener() {
-        lvMovies.setOnItemClickListener(
-                new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        Movie movie = movies.get(position);
-                        Intent i = new Intent(MovieActivity.this, MovieDetail.class);
-                        i.putExtra("rating", movie.getRating());
-                        i.putExtra("popularity", String.valueOf(movie.getPopularity()));
-                        i.putExtra("synopsis", movie.getOverview());
-                        startActivity(i);
-                    }
-                }
-        );
-
     }
 }
