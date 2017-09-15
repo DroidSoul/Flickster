@@ -20,6 +20,11 @@ public class Movie {
     String releaseDate;
     double rating;
     double popularity;
+    String id;
+
+    public String getId() {
+        return id;
+    }
 
     public double getRating() {
         return rating / 2.0;
@@ -58,6 +63,7 @@ public class Movie {
         this.rating = jsonObject.getDouble("vote_average");
         this.popularity = jsonObject.getDouble("popularity");
         this.releaseDate = jsonObject.getString("release_date");
+        this.id = jsonObject.getString("id");
     }
 
     public static ArrayList<Movie> fromJSONArray(JSONArray array) {
@@ -70,5 +76,8 @@ public class Movie {
             }
         }
         return res;
+    }
+    public boolean isPopular() {
+        return getRating() > 2.5;
     }
 }

@@ -47,11 +47,21 @@ public class MovieActivity extends AppCompatActivity {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         Movie movie = movies.get(position);
-                        Intent i = new Intent(MovieActivity.this, MovieDetail.class);
-                        i.putExtra("rating", movie.getRating());
-                        i.putExtra("popularity", String.valueOf(movie.getPopularity()));
-                        i.putExtra("synopsis", movie.getOverview());
-                        startActivity(i);
+                        if (movie.isPopular()) {
+                            Intent i = new Intent(MovieActivity.this, PlayPopularActivity.class);
+                            i.putExtra("id", movie.getId());
+                            startActivity(i);
+                        }
+                        else {
+                            Intent i = new Intent(MovieActivity.this, MovieDetail.class);
+                            i.putExtra("rating", movie.getRating());
+                            i.putExtra("popularity", String.valueOf(movie.getPopularity()));
+                            i.putExtra("synopsis", movie.getOverview());
+                            i.putExtra("id", movie.getId());
+                            i.putExtra("releaseDate", movie.getReleaseDate());
+                            i.putExtra("posterPath", movie.getPosterPath());
+                            startActivity(i);
+                        }
                     }
                 }
         );

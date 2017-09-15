@@ -10,6 +10,12 @@
     tools:context="com.droidsoul.flickster.MovieDetail"
     android:background="#e8e8e8">
 
+    <com.google.android.youtube.player.YouTubePlayerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/playRegularTrailer"
+        android:layout_alignParentTop="true" />
+
     <RatingBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -17,20 +23,26 @@
         android:numStars="5"
         android:rating="3"
         android:stepSize="0.25"
-        android:layout_alignBottom="@+id/textView"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Rating"
+        android:text="Viewer Rating"
         android:id="@+id/textView"
-        android:layout_marginTop="35dp"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/playRegularTrailer"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:id="@+id/ivPosterImage"
+        tools:src="@drawable/small_movie_poster"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/ratingBar" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -38,19 +50,39 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Popularity"
         android:id="@+id/textView2"
-        android:layout_alignTop="@+id/tvPopularity"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_below="@+id/ratingBar"
+        android:layout_alignTop="@+id/ivPosterImage"
+        android:layout_toRightOf="@+id/ivPosterImage"
+        android:layout_toEndOf="@+id/ivPosterImage" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Large Text"
+        android:id="@+id/tvPopularity"
+        android:layout_below="@+id/textView2"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_alignStart="@+id/textView2" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
-        android:id="@+id/tvPopularity"
-        android:layout_below="@+id/ratingBar"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp" />
+        android:text="Release Date"
+        android:id="@+id/textView5"
+        android:layout_below="@+id/tvPopularity"
+        android:layout_toRightOf="@+id/ivPosterImage"
+        android:layout_toEndOf="@+id/ivPosterImage" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Medium Text"
+        android:id="@+id/tvReleaseDate"
+        android:layout_below="@+id/textView5"
+        android:layout_toRightOf="@+id/ivPosterImage" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -58,8 +90,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Synopsis"
         android:id="@+id/textView4"
-        android:layout_marginTop="42dp"
-        android:layout_below="@+id/textView2"
+        android:layout_below="@+id/ivPosterImage"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -69,8 +100,8 @@
         android:text="New Text"
         android:id="@+id/tvSynopsis"
         android:layout_below="@+id/textView4"
-        android:layout_toStartOf="@+id/ratingBar"
-        android:layout_toLeftOf="@+id/ratingBar"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+
 </RelativeLayout>
