@@ -18,7 +18,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".MovieDetail" />
-        <activity android:name=".PlayPopularActivity"></activity>
+        <activity android:name=".PlayPopularActivity">
+        </activity>
     </application>
 
 </manifest>
