@@ -42,6 +42,7 @@ The following **additional** features are implemented:
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
+
 Portrait mode:
 
 <img src='https://i.imgur.com/2pxtrZ9.gif' title='portrait_mode' width='369' alt='portrait_mode' />
