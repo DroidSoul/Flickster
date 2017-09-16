@@ -48,7 +48,7 @@ Portrait mode:
 
 Landscape mode:
 
-<img src='https://i.imgur.com/OQn7vmO.gif' title='portrait_mode' width='655' alt='landscape_mode' />
+<img src='https://i.imgur.com/OQn7vmO.gif' title='landscape_mode' width='655' alt='landscape_mode' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
