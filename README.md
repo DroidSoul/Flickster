@@ -43,7 +43,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-Portrait mode: https://i.imgur.com/2pxtrZ9.gif
+Portrait mode: https://i.imgur.com/2pxtrZ9.gif (please click this one since content length exceeded)
 
 <img src='https://i.imgur.com/2pxtrZ9.gif' title='portrait_mode' width='369' alt='portrait_mode' />
 
@@ -74,3 +74,10 @@ Movie detail UI.
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
     You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
