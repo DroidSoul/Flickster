@@ -7,6 +7,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/ivMovieImage"
+        android:contentDescription="@string/itemImage"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -20,7 +21,9 @@
         android:id="@+id/tvTitle"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/ivMovieImage"
-        android:layout_toEndOf="@+id/ivMovieImage" />
+        android:layout_toEndOf="@+id/ivMovieImage"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -31,5 +34,7 @@
         android:id="@+id/tvOverview"
         android:layout_below="@+id/tvTitle"
         android:layout_toRightOf="@+id/ivMovieImage"
-        android:layout_toEndOf="@+id/ivMovieImage" />
+        android:layout_toEndOf="@+id/ivMovieImage"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"/>
 </RelativeLayout>

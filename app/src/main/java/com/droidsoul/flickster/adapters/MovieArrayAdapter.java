@@ -103,7 +103,7 @@ public class MovieArrayAdapter extends ArrayAdapter<Movie> {
                 Picasso.with(getContext()).load(movie.getPosterPath()).placeholder(R.drawable.small_movie_poster).transform(new RoundedCornersTransformation(10, 10)).into(viewHolder.ivMovieImage);
             }
             else {
-                Picasso.with(getContext()).load(movie.getBackdropPath()).placeholder(R.drawable.small_movie_poster).transform(new RoundedCornersTransformation(10, 10)).into(viewHolderPopular.ivMovieImagePopular);
+                Picasso.with(getContext()).load(movie.getBackdropPath()).placeholder(R.drawable.large_movie_poster).transform(new RoundedCornersTransformation(10, 10)).into(viewHolderPopular.ivMovieImagePopular);
             }
         }
         else {

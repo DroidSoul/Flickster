@@ -1,14 +1,18 @@
-package com.droidsoul.flickster;
+package com.droidsoul.flickster.activities;
 
 import android.content.Intent;
-import android.support.v4.app.FragmentManager;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
+import com.droidsoul.flickster.R;
 import com.droidsoul.flickster.adapters.MovieArrayAdapter;
 import com.droidsoul.flickster.models.Movie;
 import com.loopj.android.http.AsyncHttpClient;
@@ -29,17 +33,81 @@ public class MovieActivity extends AppCompatActivity {
     ArrayList<Movie> movies;
     ListView lvMovies;
     MovieArrayAdapter movieAdapter;
+    TextView tvReleaseDate, tvRating, tvPopularity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+/*        tvReleaseDate = (TextView) findViewById(R.id.tvReleaseDate);
+        tvRating = (TextView) findViewById(R.id.tvRating);
+        tvPopularity = (TextView) findViewById(R.id.tvPopularity);*/
         lvMovies = (ListView) findViewById(R.id.lvMovies);
         movies = new ArrayList<>();
         movieAdapter = new MovieArrayAdapter(this, movies);
         lvMovies.setAdapter(movieAdapter);
         getMovies();
         setupListViewListener();
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.iReleaseDate) {
+            Collections.sort(movies, new Comparator<Movie>() {
+                @Override
+                public int compare(Movie o1, Movie o2) {
+                    return -o1.getReleaseDate().compareTo(o2.getReleaseDate());
+                }
+            });
+            movieAdapter.notifyDataSetChanged();
+            return true;
+        }
+        else if (id == R.id.iRating) {
+            Collections.sort(movies, new Comparator<Movie>() {
+                @Override
+                public int compare(Movie o1, Movie o2) {
+                    if (o1.getRating() <= o2.getRating()) {
+                        return 1;
+                    }
+                    else {
+                        return -1;
+                    }
+                }
+            });
+            movieAdapter.notifyDataSetChanged();
+            return true;
+        }
+        else if(id == R.id.iPopularity) {
+            Collections.sort(movies, new Comparator<Movie>() {
+                @Override
+                public int compare(Movie o1, Movie o2) {
+                    if (o1.getPopularity() <= o2.getPopularity()) {
+                        return 1;
+                    }
+                    else {
+                        return -1;
+                    }
+                }
+            });
+            movieAdapter.notifyDataSetChanged();
+            return true;
+        }
+        else {
+            return super.onOptionsItemSelected(item);
+        }
     }
     private void setupListViewListener() {
         lvMovies.setOnItemClickListener(
@@ -60,6 +128,7 @@ public class MovieActivity extends AppCompatActivity {
                             i.putExtra("id", movie.getId());
                             i.putExtra("releaseDate", movie.getReleaseDate());
                             i.putExtra("posterPath", movie.getPosterPath());
+                            i.putExtra("title", movie.getTitle());
                             startActivity(i);
                         }
                     }
@@ -80,6 +149,9 @@ public class MovieActivity extends AppCompatActivity {
             }
         });
         movieAdapter.notifyDataSetChanged();
+        tvRating.setTypeface(null, Typeface.BOLD_ITALIC);
+        tvPopularity.setTypeface(null, Typeface.NORMAL);
+        tvReleaseDate.setTypeface(null, Typeface.NORMAL);
     }
     //sort list based on priority
     public void sortPopularity(View view) {
@@ -95,6 +167,9 @@ public class MovieActivity extends AppCompatActivity {
             }
         });
         movieAdapter.notifyDataSetChanged();
+        tvRating.setTypeface(null, Typeface.NORMAL);
+        tvPopularity.setTypeface(null, Typeface.BOLD_ITALIC);
+        tvReleaseDate.setTypeface(null, Typeface.NORMAL);
     }
     public void sortReleaseDate(View view) {
         Collections.sort(movies, new Comparator<Movie>() {
@@ -104,6 +179,9 @@ public class MovieActivity extends AppCompatActivity {
             }
         });
         movieAdapter.notifyDataSetChanged();
+        tvRating.setTypeface(null, Typeface.NORMAL);
+        tvPopularity.setTypeface(null, Typeface.NORMAL);
+        tvReleaseDate.setTypeface(null, Typeface.BOLD_ITALIC);
     }
     private void getMovies() {
         String url = "https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed";

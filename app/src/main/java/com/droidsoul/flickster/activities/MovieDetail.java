@@ -1,4 +1,4 @@
-package com.droidsoul.flickster;
+package com.droidsoul.flickster.activities;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.droidsoul.flickster.R;
 import com.droidsoul.flickster.helpers.VideoPlayerHelper;
 import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubePlayerView;
@@ -14,9 +15,7 @@ import com.squareup.picasso.Picasso;
 
 import jp.wasabeef.picasso.transformations.RoundedCornersTransformation;
 
-/**
- * Created by bear&bear on 9/8/2017.
- */
+
 public class MovieDetail extends YouTubeBaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -26,6 +25,7 @@ public class MovieDetail extends YouTubeBaseActivity {
         TextView tvPopularity = findViewById(R.id.tvPopularity);
         TextView tvSynopsis = findViewById(R.id.tvSynopsis);
         TextView tvReleaseDate = findViewById(R.id.tvReleaseDate);
+        TextView tvTitle = findViewById(R.id.tvTitle);
         ImageView ivPosterImage = findViewById(R.id.ivPosterImage);
         YouTubePlayerView playRegularTrailer = findViewById(R.id.playRegularTrailer);
         String id = getIntent().getStringExtra("id");
@@ -33,6 +33,7 @@ public class MovieDetail extends YouTubeBaseActivity {
         tvPopularity.setText(getIntent().getStringExtra("popularity"));
         tvSynopsis.setText(getIntent().getStringExtra("synopsis"));
         tvReleaseDate.setText(getIntent().getStringExtra("releaseDate"));
+        tvTitle.setText(getIntent().getStringExtra("title"));
         Picasso.with(getBaseContext()).load(getIntent().getStringExtra("posterPath")).placeholder(R.drawable.small_movie_poster).transform(new RoundedCornersTransformation(10, 10)).into(ivPosterImage);
         VideoPlayerHelper videoPlayerHelper = new VideoPlayerHelper();
         videoPlayerHelper.playOrCue(id, "cue", playRegularTrailer);

@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Flickster</string>
+    <string name="Viewer_rating">Viewer Rating</string>
+    <string name="popularity">Popularity</string>
+    <string name="release_date">Release Date</string>
+    <string name="title">Title</string>
+    <string name="itemImage">poster image or backdrop image</string>
+    <string name="detailImage">movie poster image</string>
 </resources>

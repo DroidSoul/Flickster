@@ -6,9 +6,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-/**
- * Created by bear&bear on 9/7/2017.
- */
+
 public class Movie {
 
     final String posterPre = "https://image.tmdb.org/t/p/w342";
@@ -21,6 +19,11 @@ public class Movie {
     double rating;
     double popularity;
     String id;
+    String title;
+
+    public String getTitle() {
+        return title;
+    }
 
     public String getId() {
         return id;
@@ -64,6 +67,7 @@ public class Movie {
         this.popularity = jsonObject.getDouble("popularity");
         this.releaseDate = jsonObject.getString("release_date");
         this.id = jsonObject.getString("id");
+        this.title = jsonObject.getString("title");
     }
 
     public static ArrayList<Movie> fromJSONArray(JSONArray array) {
