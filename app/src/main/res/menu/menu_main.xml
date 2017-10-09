@@ -1,0 +1,20 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.droidsoul.testtoolbar.MainActivity">
+    <item
+        android:id="@+id/iReleaseDate"
+        android:orderInCategory="100"
+        android:title="relese date"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/iRating"
+        android:orderInCategory="100"
+        android:title="rating"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/iPopularity"
+        android:orderInCategory="100"
+        android:title="popularity"
+        app:showAsAction="never" />
+</menu>

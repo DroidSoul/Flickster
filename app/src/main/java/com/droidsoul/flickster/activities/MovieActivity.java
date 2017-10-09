@@ -135,7 +135,7 @@ public class MovieActivity extends AppCompatActivity {
                 }
         );
     }
-    //sort list based on due date
+/*    //sort list based on due date
     public void sortRating(View view) {
         Collections.sort(movies, new Comparator<Movie>() {
             @Override
@@ -182,7 +182,7 @@ public class MovieActivity extends AppCompatActivity {
         tvRating.setTypeface(null, Typeface.NORMAL);
         tvPopularity.setTypeface(null, Typeface.NORMAL);
         tvReleaseDate.setTypeface(null, Typeface.BOLD_ITALIC);
-    }
+    }*/
     private void getMovies() {
         String url = "https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed";
         AsyncHttpClient client = new AsyncHttpClient();
